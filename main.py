@@ -1,7 +1,7 @@
 import socket
 from datetime import datetime
 from pyfiglet import figlet_format
-import webbrowser as broswer
+from webbrowser import open as broswer_open
 
 
 def is_ipv4_address(address="127.0.0.1"):
@@ -58,9 +58,9 @@ def main():
             print(f"{opened_ports + 1} ) Port {ip}:{port} is open ({port_scanning_date.strftime(DATE_TIME_FORMAT)} ==> {str(port_scanning_time).split('.', 1)[0]})")
             opened_ports += 1
             if port == 80:
-               broswer.open(f"http://{hostname}/")
+               broswer_open(f"http://{hostname}/")
             elif port == 443:
-               broswer.open(f"https://{hostname}/")
+               broswer_open(f"https://{hostname}/")
          s.close()
    except KeyboardInterrupt:
       print(('\n' * 2) + "Exiting Program !!!")
