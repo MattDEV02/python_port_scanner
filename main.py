@@ -1,5 +1,6 @@
 import socket
 from datetime import datetime
+from os import system
 from pyfiglet import figlet_format
 from webbrowser import open as broswer_open
 
@@ -57,7 +58,9 @@ def main():
             port_scanning_time = port_scanning_date - start_scanning_date
             print(f"{opened_ports + 1} ) Port {ip}:{port} is open ({port_scanning_date.strftime(DATE_TIME_FORMAT)} ==> {str(port_scanning_time).split('.', 1)[0]})")
             opened_ports += 1
-            if port == 80:
+            if port == 22:
+               system(f"start ssh {ip}")
+            elif port == 80:
                broswer_open(f"http://{hostname}/")
             elif port == 443:
                broswer_open(f"https://{hostname}/")
